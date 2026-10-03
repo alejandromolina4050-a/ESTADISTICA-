@@ -83,7 +83,7 @@ Cuando se analiza una sola variable, se construye una distribución de **frecuen
 
 Estas herramientas permiten transformar grandes cantidades de información en estructuras organizadas que facilitan la interpretación, comparación y representación gráfica de los datos.
 
-**2.1 DISTRIBUCION DE FRECUENCIAS UNIDIMENSIONALES**
+#  .Distribucion de frecuencia unidimensionales 
 
 **Concepto**
 
