@@ -1,0 +1,1400 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.38">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Cristhian Alejandro Rodriguez Molina">
+
+<title>DISTRIBUCIONES DE FRECUENCIAS</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="index_files/libs/clipboard/clipboard.min.js"></script>
+<script src="index_files/libs/quarto-html/quarto.js" type="module"></script>
+<script src="index_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="index_files/libs/quarto-html/popper.min.js"></script>
+<script src="index_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="index_files/libs/quarto-html/anchor.min.js"></script>
+<link href="index_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="index_files/libs/quarto-html/quarto-syntax-highlighting-9de9f6925d305bcf5b7eb9351f368d06.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="index_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="index_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="index_files/libs/bootstrap/bootstrap-77bb91f4352bdc365c5d298ec77ff62a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<style>html{ scroll-behavior: smooth; }</style>
+<style>
+
+      .quarto-title-block .quarto-title-banner {
+        background: #0756ab;
+      }
+</style>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="quarto-light">
+
+<header id="title-block-header" class="quarto-title-block default toc-left page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-page-right">
+      <h1 class="title">DISTRIBUCIONES DE FRECUENCIAS</h1>
+            <p class="subtitle lead">TABLAS Y GRAFICOS</p>
+                      </div>
+  </div>
+    
+  <div class="quarto-title-meta-author column-page-right">
+    <div class="quarto-title-meta-heading">Autor/a</div>
+    <div class="quarto-title-meta-heading">Afiliación</div>
+    
+      <div class="quarto-title-meta-contents">
+      <p class="author">Cristhian Alejandro Rodriguez Molina </p>
+    </div>
+    <div class="quarto-title-meta-contents">
+          <p class="affiliation">
+              <a href="https://www.ut.edu.co/">
+              Universidad del Tolima
+              </a>
+            </p>
+        </div>
+    </div>
+
+  <div class="quarto-title-meta column-page-right">
+
+        
+      <div>
+      <div class="quarto-title-meta-heading">Fecha de publicación</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">2 de octubre de 2026</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="page-columns page-rows-contents page-layout-full toc-left">
+<div id="quarto-sidebar-toc-left" class="sidebar toc-left">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Tabla de contenidos</h2>
+   
+  <ul>
+  <li><a href="#cargar-paquetes" id="toc-cargar-paquetes" class="nav-link active" data-scroll-target="#cargar-paquetes"><span class="header-section-number">1</span> .Cargar paquetes</a></li>
+  <li><a href="#introducción" id="toc-introducción" class="nav-link" data-scroll-target="#introducción"><span class="header-section-number">2</span> .Introducción</a></li>
+  <li><a href="#frecuencia-absoluta" id="toc-frecuencia-absoluta" class="nav-link" data-scroll-target="#frecuencia-absoluta"><span class="header-section-number">3</span> .Frecuencia absoluta</a></li>
+  <li><a href="#frecuencia-relativa" id="toc-frecuencia-relativa" class="nav-link" data-scroll-target="#frecuencia-relativa"><span class="header-section-number">4</span> .Frecuencia relativa</a></li>
+  <li><a href="#distribución-de-frecuencias-bidimensional" id="toc-distribución-de-frecuencias-bidimensional" class="nav-link" data-scroll-target="#distribución-de-frecuencias-bidimensional"><span class="header-section-number">5</span> .Distribución de frecuencias bidimensional</a></li>
+  <li><a href="#resumen-de-fórmulas-frecuencia-absoluta" id="toc-resumen-de-fórmulas-frecuencia-absoluta" class="nav-link" data-scroll-target="#resumen-de-fórmulas-frecuencia-absoluta"><span class="header-section-number">6</span> .Resumen de fórmulas Frecuencia absoluta</a></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion"><span class="header-section-number">7</span> .Conclusion</a></li>
+  </ul>
+</nav>
+</div>
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+</div>
+<main class="content quarto-banner-title-block column-page-right" id="quarto-document-content">
+
+
+
+
+
+<div style="position:absolute; top:10px; right:8px;">
+<img src="Ut 2.png" width="210">
+</div>
+<style>
+body{
+  background-color:#f7f6ed;
+  font-size:130%;
+  text-align:justify;
+}
+</style>
+<section id="cargar-paquetes" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> .Cargar paquetes</h1>
+<div class="cell" data-layout-align="center">
+<details class="code-fold">
+<summary>Ver código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>ipak <span class="ot">&lt;-</span> <span class="cf">function</span>(pkg){</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">options</span>(<span class="at">repos =</span> <span class="fu">c</span>(<span class="at">CRAN=</span><span class="st">"https://cloud.r-project.org"</span>))</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  new.pkg <span class="ot">&lt;-</span> pkg[<span class="sc">!</span>(pkg <span class="sc">%in%</span> <span class="fu">rownames</span>(<span class="fu">installed.packages</span>()))]</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(<span class="fu">length</span>(new.pkg)) <span class="fu">install.packages</span>(new.pkg, <span class="at">dependencies =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">invisible</span>(<span class="fu">lapply</span>(pkg, <span class="cf">function</span>(p)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">suppressPackageStartupMessages</span>(<span class="fu">library</span>(p, <span class="at">character.only =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>  ))</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>packages <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"tidyverse"</span>,<span class="st">"kableExtra"</span>,<span class="st">"psych"</span>,<span class="st">"readxl"</span>)</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="fu">ipak</span>(packages)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+</section>
+<section id="introducción" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> .Introducción</h1>
+<p>Una <strong>distribución de frecuencias</strong> constituye una de las herramientas fundamentales del análisis <strong>estadístico descriptivo</strong>. Su propósito es organizar y resumir <strong>un conjunto de datos</strong> mediante el conteo de las veces que aparece cada valor o <strong>categoría de una variable</strong>.</p>
+<p>Cuando se analiza una sola variable, se construye una distribución de <strong>frecuencias unidimensional</strong>. Cuando se estudian simultáneamente <strong>dos variables,</strong> se utiliza una distribución de <strong>frecuencias bidimensional</strong>, también conocida como tabla de contingencia cuando las variables son categóricas.</p>
+<p>Estas herramientas permiten transformar grandes cantidades de información en estructuras organizadas que facilitan la interpretación, comparación y representación gráfica de los datos.</p>
+<p><strong>2.1 DISTRIBUCION DE FRECUENCIAS UNIDIMENSIONALES</strong></p>
+<p><strong>Concepto</strong></p>
+<p>Una <strong>distribución de frecuencias unidimensional</strong> organiza los valores observados de una única variable junto con el número de veces que aparece cada valor o categoría.</p>
+<p>Sea:</p>
+<p><span class="math display">X={x_1,x_2,\ldots,x_n}</span></p>
+<p>un conjunto de <span class="math inline">n</span> observaciones de una variable estadística <span class="math inline">X</span>.</p>
+<p>La distribución de frecuencias permite determinar cuántas observaciones corresponden a cada valor o categoría de la variable.</p>
+<p><strong>2.2 Elementos de una frecuencia</strong></p>
+<p>Una tabla de frecuencias puede contener las siguientes columnas:</p>
+<div class="table-responsive">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 27%">
+<col style="width: 51%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Símbolo</th>
+<th>Nombre</th>
+<th>Interpretación</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>$x_i$</td>
+<td>Valor o categoría</td>
+<td>Valor observado de la variable</td>
+</tr>
+<tr class="even">
+<td>$f_i$</td>
+<td>Frecuencia absoluta</td>
+<td>Número de veces que aparece $x_i$</td>
+</tr>
+<tr class="odd">
+<td>$F_i$</td>
+<td>Frecuencia absoluta acumulada</td>
+<td>Número de observaciones hasta $x_i$</td>
+</tr>
+<tr class="even">
+<td>$h_i$</td>
+<td>Frecuencia relativa</td>
+<td>Proporción de observaciones correspondiente a $x_i$</td>
+</tr>
+<tr class="odd">
+<td>$H_i$</td>
+<td>Frecuencia relativa acumulada</td>
+<td>Proporción acumulada hasta $x_i$</td>
+</tr>
+<tr class="even">
+<td>$\%$</td>
+<td>Porcentaje</td>
+<td>Frecuencia relativa expresada en porcentaje</td>
+</tr>
+</tbody>
+</table>
+</div>
+<style>
+
+.table-responsive .table {
+  background-color: #ffffff !important;
+  color: #333333 !important;
+  border: 1px solid #d9d9d9 !important;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.table-responsive .table thead th {
+  background-color: #f0f2f5 !important;
+  color: #333333 !important;
+  border-color: #d9d9d9 !important;
+  font-weight: bold;
+}
+
+.table-responsive .table tbody td {
+  background-color: #ffffff !important;
+  color: #333333 !important;
+  border-color: #e0e0e0 !important;
+}
+
+.table-responsive .table-striped tbody tr:nth-of-type(odd) td {
+  background-color: #f8f9fa !important;
+}
+
+.table-responsive .table-hover tbody tr:hover td {
+  background-color: #eef1f4 !important;
+}
+
+.table-responsive .text-center {
+  text-align: center !important;
+}
+
+</style>
+</section>
+<section id="frecuencia-absoluta" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> .Frecuencia absoluta</h1>
+<p>La frecuencia absoluta de un valor <span class="math inline">x_i</span>, representada por <span class="math inline">f_i</span>, corresponde al número de veces que dicho valor aparece en el conjunto de datos.</p>
+<p>Se cumple:</p>
+<p><span class="math display">\sum_{i=1}^{k} f_i=n</span></p>
+<p>donde:</p>
+<p><span class="math inline">k</span> = número de valores o categorías.</p>
+<p><span class="math inline">f_i</span> = frecuencia absoluta.</p>
+<p><span class="math inline">n</span> = tamaño de la muestra.</p>
+<p><strong><em>Ejemplo</em></strong></p>
+<p><strong>3.1 Frecuencia absoluta acumulada</strong></p>
+<p>La frecuencia absoluta acumulada se representa mediante <span class="math inline">F_i</span> y corresponde a la suma progresiva de las frecuencias absolutas.</p>
+<pre><code>Se calcula mediante:</code></pre>
+<p><span class="math display">F_i=\sum_{j=1}^{i}f_j</span></p>
+<p>Por tanto:</p>
+<p><span class="math display">F_1=f_1</span></p>
+<p><span class="math display">F_2=f_1+f_2</span></p>
+<p><span class="math display">F_3=f_1+f_2+f_3</span></p>
+<p>y así sucesivamente.</p>
+<p>La última frecuencia acumulada debe ser igual al tamaño de la muestra:</p>
+<p><span class="math display">F_k=n</span></p>
+<div class="cell" data-layout-align="center">
+<details class="code-fold">
+<summary>Ver código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>tramites <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"A"</span>, <span class="st">"C"</span>, <span class="st">"B"</span>, <span class="st">"A"</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>freq <span class="ot">&lt;-</span> <span class="fu">table</span>(tramites)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>freq_abs_acum <span class="ot">&lt;-</span> <span class="fu">cumsum</span>(freq)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>freq_abs_acum</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>A B C 
+3 5 6 </code></pre>
+</div>
+</div>
+<p>La función <code>cumsum()</code> calcula sumas acumuladas.</p>
+</section>
+<section id="frecuencia-relativa" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> .Frecuencia relativa</h1>
+<p>La frecuencia relativa indica <strong>la proporción de observaciones</strong> que corresponde a cada valor o categoría.</p>
+<p>Se representa mediante <span class="math inline">h_i</span> y se calcula como:</p>
+<p><span class="math display">h_i=\frac{f_i}{n}</span></p>
+<p>La suma de todas las frecuencias relativas debe ser:</p>
+<p><span class="math display">\sum_{i=1}^{k}h_i=1</span></p>
+<p><strong>En porcentaje</strong></p>
+<p>Para expresar la frecuencia relativa como porcentaje:</p>
+<p><span class="math display">p_i=h_i\times100</span></p>
+<p>Por ejemplo, si:</p>
+<p><span class="math display">h_i=0.25</span></p>
+<p>entonces:</p>
+<p><span class="math display">p_i=0.25(100)=25%</span></p>
+<p><strong>4.1 Frecuencia relativa acumulada</strong></p>
+<p>La frecuencia relativa acumulada se representa mediante <span class="math inline">H_i</span>.</p>
+<p>Se calcula mediante:</p>
+<p><span class="math display">H_i=\sum_{j=1}^{i}h_j</span></p>
+<p>También puede calcularse directamente como:</p>
+<p><span class="math display">H_i=\frac{F_i}{n}</span></p>
+<p>La última frecuencia relativa acumulada debe ser:</p>
+<p><span class="math display">H_k=1</span></p>
+<p>o equivalentemente:</p>
+<p><span class="math display">H_k=100%</span></p>
+<p><strong>4.2Tabla de frecuencias completa</strong></p>
+<p>Una tabla de frecuencias para una variable cuantitativa discreta puede estructurarse así:</p>
+<div class="cell" data-layout-align="center">
+<details class="code-fold">
+<summary>Ver código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>frecuencias <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(<span class="fu">table</span>(tramites))</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(frecuencias) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Valor"</span>, <span class="st">"fi"</span>)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>frecuencias<span class="sc">$</span>Fi <span class="ot">&lt;-</span> <span class="fu">cumsum</span>(frecuencias<span class="sc">$</span>fi)</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>frecuencias<span class="sc">$</span>hi <span class="ot">&lt;-</span> frecuencias<span class="sc">$</span>fi <span class="sc">/</span> <span class="fu">sum</span>(frecuencias<span class="sc">$</span>fi)</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>frecuencias<span class="sc">$</span>Hi <span class="ot">&lt;-</span> <span class="fu">cumsum</span>(frecuencias<span class="sc">$</span>hi)</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>frecuencias<span class="sc">$</span>Porcentaje <span class="ot">&lt;-</span> frecuencias<span class="sc">$</span>hi <span class="sc">*</span> <span class="dv">100</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>frecuencias</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>  Valor fi Fi        hi        Hi Porcentaje
+1     A  3  3 0.5000000 0.5000000   50.00000
+2     B  2  5 0.3333333 0.8333333   33.33333
+3     C  1  6 0.1666667 1.0000000   16.66667</code></pre>
+</div>
+</div>
+<div class="cell" data-layout-align="center">
+<details class="code-fold">
+<summary>Ver código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>frecuencias<span class="sc">$</span>hi <span class="ot">&lt;-</span> <span class="fu">round</span>(frecuencias<span class="sc">$</span>hi, <span class="dv">4</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>frecuencias<span class="sc">$</span>Hi <span class="ot">&lt;-</span> <span class="fu">round</span>(frecuencias<span class="sc">$</span>Hi, <span class="dv">4</span>)</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>frecuencias<span class="sc">$</span>Porcentaje <span class="ot">&lt;-</span> <span class="fu">round</span>(</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  frecuencias<span class="sc">$</span>Porcentaje, <span class="dv">2</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>frecuencias</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>  Valor fi Fi     hi     Hi Porcentaje
+1     A  3  3 0.5000 0.5000      50.00
+2     B  2  5 0.3333 0.8333      33.33
+3     C  1  6 0.1667 1.0000      16.67</code></pre>
+</div>
+</div>
+<p><strong>4.3 Distribuciones de frecuencia para variables cualitativas</strong></p>
+<p>Cuando la variable es cualitativa, los valores representan categorías.</p>
+<p><strong>Ejemplo</strong></p>
+<p>Supongamos una encuesta realizada a 30 ciudadanos sobre el nivel de satisfacción con un servicio público:</p>
+<p><strong>Satisfacción</strong></p>
+<div class="cell" data-layout-align="center">
+<details class="code-fold">
+<summary>Ver código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>satisfaccion <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Alta"</span>,<span class="st">"Media"</span>,<span class="st">"Baja"</span>,<span class="st">"Alta"</span>,<span class="st">"Media"</span>,</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Alta"</span>,<span class="st">"Baja"</span>,<span class="st">"Media"</span>,<span class="st">"Alta"</span>,<span class="st">"Alta"</span>,</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Media"</span>,<span class="st">"Baja"</span>,<span class="st">"Alta"</span>,<span class="st">"Media"</span>,<span class="st">"Alta"</span>,</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Baja"</span>,<span class="st">"Media"</span>,<span class="st">"Alta"</span>,<span class="st">"Media"</span>,<span class="st">"Alta"</span>,</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Baja"</span>,<span class="st">"Alta"</span>,<span class="st">"Media"</span>,<span class="st">"Alta"</span>,<span class="st">"Media"</span>,</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Baja"</span>,<span class="st">"Alta"</span>,<span class="st">"Media"</span>,<span class="st">"Alta"</span>,<span class="st">"Media"</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(satisfaccion)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>satisfaccion
+ Alta  Baja Media 
+   13     6    11 </code></pre>
+</div>
+</div>
+<p><strong>Porcentajes</strong></p>
+<div class="cell" data-layout-align="center">
+<details class="code-fold">
+<summary>Ver código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.table</span>(<span class="fu">table</span>(satisfaccion))</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>satisfaccion
+     Alta      Baja     Media 
+0.4333333 0.2000000 0.3666667 </code></pre>
+</div>
+</div>
+<p><strong>Expresado en porcentaje</strong></p>
+<div class="cell" data-layout-align="center">
+<details class="code-fold">
+<summary>Ver código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">prop.table</span>(<span class="fu">table</span>(satisfaccion)) <span class="sc">*</span> <span class="dv">100</span>, <span class="dv">2</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>satisfaccion
+ Alta  Baja Media 
+43.33 20.00 36.67 </code></pre>
+</div>
+</div>
+<p>La elección del gráfico depende del tipo de variable.</p>
+<p>Tipo de variable Gráfico recomendado Cualitativa nominal Barras Cualitativa ordinal Barras ordenadas Cuantitativa discreta Barras Cuantitativa continua Histograma Cuantitativa Polígono de frecuencias Cuantitativa Ojiva para frecuencias acumuladas</p>
+<p><strong>4.3 Gráfico de barras library(ggplot2)</strong></p>
+<div class="cell" data-layout-align="center">
+<details class="code-fold">
+<summary>Ver código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">data.frame</span>(satisfaccion), <span class="fu">aes</span>(<span class="at">x =</span> satisfaccion)) <span class="sc">+</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Nivel de satisfacción de los ciudadanos"</span>,</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Nivel de satisfacción"</span>,</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Frecuencia"</span></span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>4.4 Distribución de frecuencias para datos agrupados</strong></p>
+<p>Cuando una variable cuantitativa continua presenta muchos valores diferentes, puede ser conveniente agruparlos en intervalos de clase.</p>
+<p>Por ejemplo:</p>
+<p><span class="math display">[20,30),\quad [30,40),\quad [40,50),\quad [50,60)</span></p>
+<p>Cada intervalo contiene un conjunto de valores.</p>
+<p><strong>4.5 Elementos de una distribución agrupada</strong></p>
+<p>Para cada intervalo pueden calcularse:</p>
+<p>Límite inferior. Límite superior. Marca de clase. Frecuencia absoluta. Frecuencia acumulada. Frecuencia relativa. Frecuencia relativa acumulada.</p>
+<p>La marca de clase se calcula mediante:</p>
+<p><span class="math display">x_i=\frac{L_i+U_i}{2}</span></p>
+<p>donde:</p>
+<p><span class="math inline">L_i</span> = límite inferior. <span class="math inline">U_i</span> = límite superior. 11. Número de intervalos</p>
+<p>Una regla frecuente para determinar aproximadamente el número de clases es la regla de Sturges:</p>
+<p><span class="math display">k=1+3.322\log_{10}(n)</span></p>
+<p>donde <span class="math inline">n</span> representa el tamaño de la muestra.</p>
+<p>Otra expresión equivalente es:</p>
+<p><span class="math display">k=1+\log_2(n)</span></p>
+<p>Una vez determinado <span class="math inline">k</span>, puede calcularse la amplitud aproximada:</p>
+<p><span class="math display">A=\frac{R}{k}</span></p>
+<p>donde:</p>
+<p><span class="math display">R=X_{\max}-X_{\min}</span></p>
+<p>es el rango.</p>
+<p><strong>4.6 Ejemplo con datos cuantitativos</strong></p>
+<p>Supongamos que se dispone de los ingresos mensuales de 40 usuarios, expresados en millones de pesos:</p>
+<div class="cell" data-layout-align="center">
+<details class="code-fold">
+<summary>Ver código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>ingresos <span class="ot">&lt;-</span> <span class="fu">round</span>(</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">runif</span>(<span class="dv">40</span>, <span class="fl">1.2</span>, <span class="fl">6.5</span>),</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>  <span class="dv">2</span></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>ingresos</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] 2.72 5.38 3.37 5.88 6.18 1.44 4.00 5.93 4.12 3.62 6.27 3.60 4.79 4.23 1.75
+[16] 5.97 2.50 1.42 2.94 6.26 5.91 4.87 4.59 6.47 4.68 4.96 4.08 4.35 2.73 1.98
+[31] 6.30 5.98 4.86 5.42 1.33 3.73 5.22 2.35 2.89 2.43</code></pre>
+</div>
+</div>
+<p><strong>Podemos construir intervalos mediante <code>cut()</code>:</strong></p>
+<div class="cell" data-layout-align="center">
+<details class="code-fold">
+<summary>Ver código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>intervalos <span class="ot">&lt;-</span> <span class="fu">cut</span>(</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  ingresos,</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>),</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">right =</span> <span class="cn">FALSE</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(intervalos)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>intervalos
+[1,2) [2,3) [3,4) [4,5) [5,6) [6,7) 
+    5     7     4    11     8     5 </code></pre>
+</div>
+</div>
+</section>
+<section id="distribución-de-frecuencias-bidimensional" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> .Distribución de frecuencias bidimensional</h1>
+<p><strong>5.1 Concepto</strong></p>
+<p>Una distribución de frecuencias bidimensional estudia simultáneamente dos variables estadísticas.</p>
+<p>Sean:</p>
+<p><span class="math display">X \quad \text{y} \quad Y</span></p>
+<p>dos variables observadas sobre los mismos individuos.</p>
+<p>El objetivo consiste en analizar cómo se distribuyen conjuntamente los valores de ambas variables.</p>
+<p><strong>Por ejemplo:</strong></p>
+<p>Edad y satisfacción. Nivel educativo y satisfacción. Estrato y acceso a un programa social. Modalidad de atención y satisfacción. Género y tipo de servicio utilizado.</p>
+<p><strong>5.2 Tabla de contingencia</strong></p>
+<p>Cuando las dos variables son cualitativas o categóricas, la distribución bidimensional suele representarse mediante una tabla de contingencia.</p>
+<p>Supongamos que se estudian:</p>
+<p><span class="math inline">X</span>: modalidad de atención. <span class="math inline">Y</span>: nivel de satisfacción.</p>
+<p>La tabla puede tener la siguiente estructura:</p>
+<div class="cell" data-layout-align="center">
+<details class="code-fold">
+<summary>Ver código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>tabla <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">Modalidad =</span> <span class="fu">c</span>(<span class="st">"Presencial"</span>, <span class="st">"Virtual"</span>),</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">Alta =</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">8</span>),</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">Media =</span> <span class="fu">c</span>(<span class="dv">6</span>, <span class="dv">7</span>),</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">Baja =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">5</span>)</span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>tabla<span class="sc">$</span>Total <span class="ot">&lt;-</span> <span class="fu">rowSums</span>(tabla[, <span class="dv">2</span><span class="sc">:</span><span class="dv">4</span>])</span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>tabla</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>   Modalidad Alta Media Baja Total
+1 Presencial   10     6    4    20
+2    Virtual    8     7    5    20</code></pre>
+</div>
+</div>
+<p><strong>Totales</strong></p>
+<div class="cell" data-layout-align="center">
+<details class="code-fold">
+<summary>Ver código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colSums</span>(tabla[, <span class="dv">2</span><span class="sc">:</span><span class="dv">4</span>])</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code> Alta Media  Baja 
+   18    13     9 </code></pre>
+</div>
+</div>
+<p>Los valores <span class="math inline">n_{ij}</span> representan las frecuencias conjuntas.</p>
+<p><strong>5.3 recuencia conjunta</strong></p>
+<p>La frecuencia conjunta <span class="math inline">n_{ij}</span> corresponde al número de individuos que simultáneamente presentan:</p>
+<p><span class="math display">X=x_i</span></p>
+<p>y</p>
+<p><span class="math display">Y=y_j</span></p>
+<p>Por ejemplo:</p>
+<p><span class="math display">n_{23}</span></p>
+<p>representaría el número de individuos pertenecientes a la categoría 2 de <span class="math inline">X</span> y a la categoría 3 de <span class="math inline">Y</span>.</p>
+<p><strong>5.4 Frecuencias marginales</strong></p>
+<p>Las frecuencias marginales se obtienen sumando las frecuencias de las filas o columnas.</p>
+<p>Frecuencia marginal de X</p>
+<p><span class="math display">n_{i.}=\sum_j n_{ij}</span></p>
+<p>Frecuencia marginal de Y</p>
+<p><span class="math display">n_{.j}=\sum_i n_{ij}</span></p>
+<p>El total general es:</p>
+<p><span class="math display">n=\sum_i\sum_j n_{ij}</span></p>
+<p><strong>5.5 Frecuencias relativas bidimensionales</strong></p>
+<p>La frecuencia relativa conjunta se calcula como:</p>
+<p><span class="math display">h_{ij}=\frac{n_{ij}}{n}</span></p>
+<p>y cumple:</p>
+<p><span class="math display">\sum_i\sum_jh_{ij}=1</span></p>
+<p>En porcentaje:</p>
+<p><span class="math display">p_{ij}=100h_{ij}</span></p>
+<p><strong>5.6 Frecuencias condicionales</strong></p>
+<p>Las frecuencias condicionales permiten analizar la distribución de una variable dentro de una categoría específica de la otra variable.</p>
+<p>Si queremos analizar <span class="math inline">Y</span> condicionado a <span class="math inline">X=x_i</span>:</p>
+<p><span class="math display">h_{j|i}=
+\frac{n_{ij}}{n_{i.}}</span></p>
+<p>Si queremos analizar <span class="math inline">X</span> condicionado a <span class="math inline">Y=y_j</span>:</p>
+<p><span class="math display">h_{i|j}=
+\frac{n_{ij}}{n_{.j}}</span></p>
+<p>Las frecuencias condicionales son fundamentales para estudiar posibles relaciones entre dos variables.</p>
+<p><strong>5.7 Ejemplo de tabla bidimensional en R</strong></p>
+<p>Consideremos una encuesta realizada a 100 ciudadanos:</p>
+<div class="cell" data-layout-align="center">
+<details class="code-fold">
+<summary>Ver código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>datos <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">Modalidad =</span> <span class="fu">c</span>(</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Presencial"</span>, <span class="st">"Presencial"</span>, <span class="st">"Presencial"</span>,</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Virtual"</span>, <span class="st">"Virtual"</span>, <span class="st">"Virtual"</span></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>  ),</span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">Satisfaccion =</span> <span class="fu">c</span>(</span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Alta"</span>, <span class="st">"Media"</span>, <span class="st">"Baja"</span>,</span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Alta"</span>, <span class="st">"Media"</span>, <span class="st">"Baja"</span></span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>  ),</span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">Frecuencia =</span> <span class="fu">c</span>(</span>
+<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a>    <span class="dv">30</span>, <span class="dv">15</span>, <span class="dv">5</span>,</span>
+<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a>    <span class="dv">20</span>, <span class="dv">20</span>, <span class="dv">10</span></span>
+<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb24-15"><a href="#cb24-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-16"><a href="#cb24-16" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(</span>
+<span id="cb24-17"><a href="#cb24-17" aria-hidden="true" tabindex="-1"></a>  datos,</span>
+<span id="cb24-18"><a href="#cb24-18" aria-hidden="true" tabindex="-1"></a>  <span class="at">col.names =</span> <span class="fu">c</span>(<span class="st">"Modalidad"</span>, <span class="st">"Satisfacción"</span>, <span class="st">"Frecuencia"</span>),</span>
+<span id="cb24-19"><a href="#cb24-19" aria-hidden="true" tabindex="-1"></a>  <span class="at">align =</span> <span class="st">"c"</span>,</span>
+<span id="cb24-20"><a href="#cb24-20" aria-hidden="true" tabindex="-1"></a>  <span class="at">caption =</span> <span class="st">"Tabla de satisfacción según modalidad"</span></span>
+<span id="cb24-21"><a href="#cb24-21" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<caption>Tabla de satisfacción según modalidad</caption>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Modalidad</th>
+<th style="text-align: center;">Satisfacción</th>
+<th style="text-align: center;">Frecuencia</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Presencial</td>
+<td style="text-align: center;">Alta</td>
+<td style="text-align: center;">30</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Presencial</td>
+<td style="text-align: center;">Media</td>
+<td style="text-align: center;">15</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Presencial</td>
+<td style="text-align: center;">Baja</td>
+<td style="text-align: center;">5</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Virtual</td>
+<td style="text-align: center;">Alta</td>
+<td style="text-align: center;">20</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Virtual</td>
+<td style="text-align: center;">Media</td>
+<td style="text-align: center;">20</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Virtual</td>
+<td style="text-align: center;">Baja</td>
+<td style="text-align: center;">10</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Para obtener una tabla de contingencia:</p>
+<div class="cell" data-layout-align="center">
+<details class="code-fold">
+<summary>Ver código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  tabla,</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">caption =</span> <span class="st">"Tabla de contingencia entre modalidad y satisfacción"</span>,</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">align =</span> <span class="st">"c"</span></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<caption>Tabla de contingencia entre modalidad y satisfacción</caption>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Modalidad</th>
+<th style="text-align: center;">Alta</th>
+<th style="text-align: center;">Media</th>
+<th style="text-align: center;">Baja</th>
+<th style="text-align: center;">Total</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Presencial</td>
+<td style="text-align: center;">10</td>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">20</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Virtual</td>
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">7</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">20</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>El resultado conceptual es:</p>
+<p>Modalidad Alta Media Baja Presencial 30 15 5 Virtual 20 20 10 21. Totales marginales en R</p>
+<p>Podemos obtener los totales de filas y columnas mediante:</p>
+<p>addmargins(tabla)</p>
+<p>También:</p>
+<p>margin.table(tabla, 1)</p>
+<p>permite obtener las frecuencias marginales de las filas.</p>
+<p>Mientras:</p>
+<p>margin.table(tabla, 2)</p>
+<p>obtiene las frecuencias marginales de las columnas.</p>
+<p><strong><em>5.8 Frecuencias relativas en R</em></strong></p>
+<p>Para obtener las frecuencias relativas conjuntas:</p>
+<p><strong>prop.table(tabla)</strong></p>
+<p>Para obtener porcentajes:</p>
+<p><strong>round(prop.table(tabla) * 100, 2) 23. Porcentajes por fila</strong></p>
+<p>Para estudiar la distribución de la satisfacción dentro de cada modalidad:</p>
+<p><strong>prop.table(tabla, 1)</strong></p>
+<p>En porcentaje:</p>
+<p><strong>round(prop.table(tabla, 1) * 100, 2)</strong></p>
+<p>La opción margin = 1 indica que los porcentajes se calculan por fila.</p>
+<p><strong>5.9 Porcentajes por columna</strong></p>
+<p>Para estudiar la distribución de la modalidad dentro de cada nivel de satisfacción:</p>
+<p>prop.table(tabla, 2)</p>
+<p>En porcentaje:</p>
+<p>round(prop.table(tabla, 2) * 100, 2)</p>
+<p>La opción margin = 2 indica que los porcentajes se calculan por columna.</p>
+<p><strong>5.10 Interpretación de una tabla bidimensional</strong></p>
+<p>Supongamos que para los usuarios de modalidad presencial se obtiene:</p>
+<p>Modalidad Alta Media Baja Presencial 30 15 5</p>
+<p>El total de usuarios presenciales es:</p>
+<p><span class="math display">30+15+5=50</span></p>
+<p>Por tanto, la proporción de usuarios presenciales con satisfacción alta es:</p>
+<p><span class="math display">\frac{30}{50}=0.60</span></p>
+<p>o:</p>
+<p><span class="math display">60%</span></p>
+<p>Una interpretación estadística sería:</p>
+<p>El 60 % de los usuarios atendidos mediante la modalidad presencial presenta un nivel de satisfacción alto.</p>
+<p>Es importante distinguir este resultado de un porcentaje calculado sobre el total general de la muestra.</p>
+<p><strong>5.11 Visualización de una distribución bidimensional</strong></p>
+<p>Una tabla de contingencia puede representarse mediante un gráfico de barras.</p>
+<p>library(ggplot2)</p>
+<div class="cell" data-layout-align="center">
+<details class="code-fold">
+<summary>Ver código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>datos_grafico <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">Modalidad =</span> <span class="fu">rep</span>(</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">c</span>(<span class="st">"Presencial"</span>, <span class="st">"Virtual"</span>),</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">each =</span> <span class="dv">3</span></span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>  ),</span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">Satisfaccion =</span> <span class="fu">rep</span>(</span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">c</span>(<span class="st">"Alta"</span>, <span class="st">"Media"</span>, <span class="st">"Baja"</span>),</span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>    <span class="dv">2</span></span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a>  ),</span>
+<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">Frecuencia =</span> <span class="fu">c</span>(</span>
+<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a>    <span class="dv">30</span>, <span class="dv">15</span>, <span class="dv">5</span>,</span>
+<span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a>    <span class="dv">20</span>, <span class="dv">20</span>, <span class="dv">10</span></span>
+<span id="cb26-13"><a href="#cb26-13" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb26-14"><a href="#cb26-14" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb26-15"><a href="#cb26-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-16"><a href="#cb26-16" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(</span>
+<span id="cb26-17"><a href="#cb26-17" aria-hidden="true" tabindex="-1"></a>  datos_grafico,</span>
+<span id="cb26-18"><a href="#cb26-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(</span>
+<span id="cb26-19"><a href="#cb26-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> Modalidad,</span>
+<span id="cb26-20"><a href="#cb26-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> Frecuencia,</span>
+<span id="cb26-21"><a href="#cb26-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill =</span> Satisfaccion</span>
+<span id="cb26-22"><a href="#cb26-22" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb26-23"><a href="#cb26-23" aria-hidden="true" tabindex="-1"></a>) <span class="sc">+</span></span>
+<span id="cb26-24"><a href="#cb26-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(</span>
+<span id="cb26-25"><a href="#cb26-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">position =</span> <span class="st">"dodge"</span></span>
+<span id="cb26-26"><a href="#cb26-26" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb26-27"><a href="#cb26-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb26-28"><a href="#cb26-28" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Satisfacción según modalidad de atención"</span>,</span>
+<span id="cb26-29"><a href="#cb26-29" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Modalidad"</span>,</span>
+<span id="cb26-30"><a href="#cb26-30" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Frecuencia"</span></span>
+<span id="cb26-31"><a href="#cb26-31" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb26-32"><a href="#cb26-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>También puede utilizarse:</p>
+<div class="cell" data-layout-align="center">
+<details class="code-fold">
+<summary>Ver código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>  datos_grafico,</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(</span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> Modalidad,</span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> Frecuencia,</span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill =</span> Satisfaccion</span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>) <span class="sc">+</span></span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span></span>
+<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Distribución de la satisfacción según modalidad"</span>,</span>
+<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Modalidad"</span>,</span>
+<span id="cb27-13"><a href="#cb27-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Frecuencia"</span></span>
+<span id="cb27-14"><a href="#cb27-14" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb27-15"><a href="#cb27-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Para comparar estructuras porcentuales entre grupos:</p>
+<div class="cell" data-layout-align="center">
+<details class="code-fold">
+<summary>Ver código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>  datos_grafico,</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(</span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> Modalidad,</span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> Frecuencia,</span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill =</span> Satisfaccion</span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>) <span class="sc">+</span></span>
+<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">position =</span> <span class="st">"fill"</span>) <span class="sc">+</span></span>
+<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(</span>
+<span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">labels =</span> scales<span class="sc">::</span>percent</span>
+<span id="cb28-12"><a href="#cb28-12" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb28-13"><a href="#cb28-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb28-14"><a href="#cb28-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Distribución porcentual de la satisfacción"</span>,</span>
+<span id="cb28-15"><a href="#cb28-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Modalidad"</span>,</span>
+<span id="cb28-16"><a href="#cb28-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Porcentaje"</span></span>
+<span id="cb28-17"><a href="#cb28-17" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb28-18"><a href="#cb28-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Este gráfico resulta especialmente útil cuando los tamaños de los grupos son diferentes.</p>
+<p><strong>5.12 Distribución bidimensional y asociación</strong></p>
+<p>Una de las principales aplicaciones de las tablas bidimensionales consiste en estudiar si existe una posible relación o asociación entre dos variables.</p>
+<p>Por ejemplo:</p>
+<p><span class="math display">\text{Modalidad de atención}
+\quad\longleftrightarrow\quad
+\text{Satisfacción}</span></p>
+<p>Si las distribuciones condicionales son muy diferentes entre las modalidades, puede existir evidencia descriptiva de asociación.</p>
+<p>Sin embargo, una diferencia descriptiva no significa necesariamente que exista una asociación estadísticamente significativa.</p>
+<p>Para evaluar formalmente la asociación entre dos variables categóricas puede utilizarse, entre otras herramientas, la prueba chi-cuadrado de independencia.</p>
+<p><strong>5.13 Prueba chi-cuadrado en R</strong></p>
+<p>A partir de una tabla de contingencia:</p>
+<p>chisq.test(tabla)</p>
+<p>La hipótesis nula es:</p>
+<p><span class="math display">H_0:
+\text{Las variables son independientes}</span></p>
+<p>Mientras que la hipótesis alternativa es:</p>
+<p><span class="math display">H_1:
+\text{Las variables no son independientes}</span></p>
+<p>La decisión estadística se basa generalmente en el valor-p.</p>
+<p>Si:</p>
+<p><span class="math display">p&lt;\alpha</span></p>
+<p>se rechaza <span class="math inline">H_0</span>.</p>
+<p>Si:</p>
+<p><span class="math display">p\geq\alpha</span></p>
+<p>no se rechaza <span class="math inline">H_0</span>.</p>
+<p>Es habitual utilizar:</p>
+<p><span class="math display">\alpha=0.05</span></p>
+<p>En R podemos crear una función reutilizable:</p>
+<p>tabla_frecuencias &lt;- function(x) {</p>
+<p>fi &lt;- table(x)</p>
+<p>tabla &lt;- data.frame( Valor = names(fi), fi = as.vector(fi) )</p>
+<p>tabla<span class="math inline">Fi &lt;- cumsum(tabla</span>fi)</p>
+<p>tabla<span class="math inline">hi &lt;- tabla</span>fi / sum(tabla$fi)</p>
+<p>tabla<span class="math inline">Hi &lt;- cumsum(tabla</span>hi)</p>
+<p>tabla<span class="math inline">Porcentaje &lt;- tabla</span>hi * 100</p>
+<p>tabla }</p>
+<p>Aplicación:</p>
+<p>tabla_frecuencias(satisfaccion)</p>
+</section>
+<section id="resumen-de-fórmulas-frecuencia-absoluta" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> .Resumen de fórmulas Frecuencia absoluta</h1>
+<p><span class="math display">f_i</span></p>
+<p><strong>Frecuencia absoluta acumulada</strong></p>
+<p><span class="math display">F_i=\sum_{j=1}^{i}f_j</span></p>
+<p><strong>Frecuencia relativa</strong></p>
+<p><span class="math display">h_i=\frac{f_i}{n}</span></p>
+<p><strong>Frecuencia relativa acumulada</strong></p>
+<p><span class="math display">H_i=\sum_{j=1}^{i}h_j</span></p>
+<p><strong>Porcentaje</strong></p>
+<p><span class="math display">p_i=100h_i</span></p>
+<p><strong>Frecuencia conjunta</strong></p>
+<p><span class="math display">n_{ij}</span></p>
+<p><strong>Frecuencia marginal de X</strong></p>
+<p><span class="math display">n_{i.}=\sum_jn_{ij}</span></p>
+<p><strong>Frecuencia marginal de Y</strong></p>
+<p><span class="math display">n_{.j}=\sum_in_{ij}</span></p>
+<p><strong>Frecuencia relativa conjunta</strong></p>
+<p><span class="math display">h_{ij}=\frac{n_{ij}}{n}</span></p>
+<p><strong>Frecuencia condicional</strong></p>
+<p><span class="math display">h_{j|i}=\frac{n_{ij}}{n_{i.}}</span></p>
+<p><strong>Amplitud</strong></p>
+<p><span class="math display">A=\frac{R}{k}</span></p>
+<p><strong>Rango</strong></p>
+<p><span class="math display">R=X_{\max}-X_{\min}</span></p>
+<p><strong>Marca de clase</strong></p>
+<p><span class="math display">x_i=\frac{L_i+U_i}{2}</span></p>
+</section>
+<section id="conclusion" class="level1" data-number="7">
+<h1 data-number="7"><span class="header-section-number">7</span> .Conclusion</h1>
+<p>En conclusión, las distribuciones de frecuencias constituyen una herramienta fundamental dentro de <strong>la estadística descriptiva</strong>, ya que permiten organizar, resumir y presentar de manera clara la información obtenida de un conjunto de datos. A través de estas distribuciones es posible transformar una cantidad de datos que puede resultar difícil de interpretar en tablas estructuradas que facilitan el análisis y la comprensión de los resultados.</p>
+<p>La <strong>distribución de frecuencias unidimensional</strong> permite estudiar una sola variable y determinar cómo se distribuyen sus valores o categorías. Para ello, se pueden utilizar diferentes tipos de frecuencias, como la frecuencia absoluta, la frecuencia absoluta acumulada, la frecuencia relativa, la frecuencia relativa acumulada y el porcentaje. Cada una proporciona una perspectiva diferente de los datos: mientras la frecuencia absoluta indica cuántas veces aparece un determinado valor, la frecuencia relativa permite conocer qué proporción representa respecto al total de observaciones.</p>
+<p>Por otra parte, las distribuciones de frecuencias bidimensionales permiten estudiar simultáneamente dos variables observadas sobre los mismos individuos. Estas distribuciones son especialmente importantes porque permiten analizar cómo se comportan conjuntamente las variables mediante frecuencias conjuntas, marginales y condicionales. En el caso de variables categóricas, este análisis puede organizarse mediante tablas de contingencia, facilitando la identificación de posibles patrones o diferencias entre los grupos estudiados.</p>
+<p>Un aspecto importante del análisis bidimensional es que los porcentajes deben interpretarse correctamente, indicando si se calculan sobre el total de la muestra, por filas o por columnas. Esta distinción es fundamental para evitar interpretaciones incorrectas de los resultados. Además, aunque una diferencia entre distribuciones pueda mostrar evidencia descriptiva de una posible relación entre dos variables, esto no significa necesariamente que exista una asociación estadísticamente significativa. Para este propósito, cuando corresponde, puede utilizarse la prueba chi-cuadrado de independencia.</p>
+<p>El uso de R y RStudio facilita considerablemente este proceso, debido a que permite automatizar la construcción de tablas, el cálculo de frecuencias y la elaboración de representaciones gráficas. Funciones como table() permiten obtener frecuencias absolutas, prop.table() permite calcular frecuencias relativas, cumsum() facilita el cálculo de frecuencias acumuladas y xtabs() permite construir tablas de contingencia. Asimismo, mediante ggplot2 es posible representar los resultados utilizando gráficos de barras, histogramas y barras proporcionales, de acuerdo con las características de las variables analizadas.</p>
+<p>También es fundamental identificar correctamente el tipo de variable antes de construir una distribución de frecuencias. Las variables cualitativas pueden representarse mediante categorías, mientras que las variables cuantitativas pueden ser discretas o continuas. En el caso de variables cuantitativas continuas con muchos valores diferentes, puede ser conveniente agrupar los datos en intervalos de clase y utilizar herramientas como la regla de Sturges para determinar aproximadamente el número de intervalos.</p>
+<p>En el contexto de la Administración Pública, estas herramientas tienen una aplicación importante, debido a que permiten analizar información relacionada con ciudadanos, servicios públicos, satisfacción, edad, ingresos, modalidad de atención, estrato socioeconómico y número de trámites realizados. De esta manera, las distribuciones de frecuencias pueden contribuir a organizar la información y proporcionar una base descriptiva para comprender diferentes situaciones presentes en una población o muestra.</p>
+<p>Finalmente, el análisis estadístico debe ir más allá de la elaboración mecánica de tablas. Es necesario interpretar los resultados teniendo en cuenta el contexto de la investigación, seleccionar el tipo de frecuencia y representación gráfica apropiados y diferenciar entre una descripción de los datos y una conclusión estadística. Por tanto, el trabajo conjunto entre los fundamentos teóricos de la estadística y las herramientas computacionales de R/RStudio permite desarrollar un proceso de análisis más organizado, reproducible y comprensible, desde la exploración inicial de los datos hasta su interpretación final.</p>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+<script src="index_files/libs/quarto-html/zenscroll-min.js"></script>
+</body></html>
