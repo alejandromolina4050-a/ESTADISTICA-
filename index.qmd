@@ -104,12 +104,12 @@ Una tabla de frecuencias puede contener las siguientes columnas:
 ::: table-responsive
 | Símbolo | Nombre | Interpretación |
 |---------------|--------------------|-------------------------------------|
-| \$x_i\$ | Valor o categoría | Valor observado de la variable |
-| \$f_i\$ | Frecuencia absoluta | Número de veces que aparece \$x_i\$ |
-| \$F_i\$ | Frecuencia absoluta acumulada | Número de observaciones hasta \$x_i\$ |
-| \$h_i\$ | Frecuencia relativa | Proporción de observaciones correspondiente a \$x_i\$ |
-| \$H_i\$ | Frecuencia relativa acumulada | Proporción acumulada hasta \$x_i\$ |
-| \$\\%\$ | Porcentaje | Frecuencia relativa expresada en porcentaje |
+| $x_i$ | Valor o categoría | Valor observado de la variable |
+| $f_i$ | Frecuencia absoluta | Número de veces que aparece $x_i$ |
+| $F_i$ | Frecuencia absoluta acumulada | Número de observaciones hasta $x_i$ |
+| $h_i$ | Frecuencia relativa | Proporción de observaciones correspondiente a $x_i$ |
+| $H_i$ | Frecuencia relativa acumulada | Proporción acumulada hasta $x_i$ |
+| $\\%$ | Porcentaje | Frecuencia relativa expresada en porcentaje |
 :::
 
 ```{=html}
@@ -360,7 +360,9 @@ $$x_i=\frac{L_i+U_i}{2}$$
 
 donde:
 
-$L_i$ = límite inferior. $U_i$ = límite superior. 11. Número de intervalos
+$L_i$ = límite inferior. 
+$U_i$ = límite superior. 
+#    .Número de intervalos
 
 Una regla frecuente para determinar aproximadamente el número de clases es la regla de Sturges:
 
@@ -774,25 +776,41 @@ $$\alpha=0.05$$
 
 En R podemos crear una función reutilizable:
 
-tabla_frecuencias \<- function(x) {
+**Función para construir una tabla de frecuencias**
 
-fi \<- table(x)
+```{r}
+tabla_frecuencias <- function(x) {
+  
+  fi <- table(x)
+  
+  tabla <- data.frame(
+    Valor = names(fi),
+    fi = as.vector(fi)
+  )
+  
+  tabla$Fi <- cumsum(tabla$fi)
+  tabla$hi <- tabla$fi / sum(tabla$fi)
+  tabla$Hi <- cumsum(tabla$hi)
+  tabla$Porcentaje <- tabla$hi * 100
+  
+  return(tabla)
+}
+tabla <- tabla_frecuencias(satisfaccion)
 
-tabla \<- data.frame( Valor = names(fi), fi = as.vector(fi) )
-
-tabla$Fi <- cumsum(tabla$fi)
-
-tabla$hi <- tabla$fi / sum(tabla\$fi)
-
-tabla$Hi <- cumsum(tabla$hi)
-
-tabla$Porcentaje <- tabla$hi \* 100
-
-tabla }
-
-Aplicación:
-
-tabla_frecuencias(satisfaccion)
+knitr::kable(
+  tabla,
+  digits = 2,
+  col.names = c(
+    "Valor",
+    "Frecuencia absoluta (fi)",
+    "Frecuencia acumulada (Fi)",
+    "Frecuencia relativa (hi)",
+    "Frecuencia relativa acumulada (Hi)",
+    "Porcentaje (%)"
+  ),
+  caption = "Distribución de frecuencias de la satisfacción"
+)
+```
 
 
 #  .Resumen de fórmulas Frecuencia absoluta
