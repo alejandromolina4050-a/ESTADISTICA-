@@ -2,7 +2,7 @@
 title: "DISTRIBUCIONES DE FRECUENCIAS"
 subtitle: "TABLAS Y GRAFICOS"
 author: 
-  - name: Cristhian Alejandro Rodriguez Molina. 
+  - name: Cristhian Alejandro Rodriguez Molina<br>Karen Dayana Ballesteros Mosquera<br>Alejandra Noreña Diaz  
     affiliation: "Universidad del Tolima"
     affiliation-url: "https://www.ut.edu.co/"
 date: today
